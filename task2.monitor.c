@@ -9,14 +9,12 @@ int main()
 	int num;
 	int operation;
 	
-	printf("Enter a number to continue: ");
+	printf("Enter your current appliance value to continue (-1 is exit): ");
 	scanf("%d",&num);
 	
 	while(num != -1)
 	{
 		printf("====The Hillcrest Apartments Smart Utility Panel====\n\n");
-		
-		sum = light + heater + ac + cctv;
 		
 		printf("Enter Operation\n");
 		printf("1. turn on \n");
@@ -29,17 +27,17 @@ int main()
 		switch(operation)
 		{
 			case 1: // on
-			sum = sum & heater;
+			sum = sum | heater;
 			printf("The heater is ON\n");
 			break;
 			
 			case 2:
-			sum = sum ^ ac;
+			sum = sum & ac;
 			printf("The ac is off\n");
 			break;
 			
 			case 3:
-			sum = ~lights;
+			sum = sum ^ light;
 			printf("The lights switch is changed\n");
 			break;
 			
@@ -51,10 +49,16 @@ int main()
 			default:
 			printf("Invalid number entered\n");
 		}
-		printf(" New value is: %d",sum);
-		if(sum& )
-		
-		
+		printf("New value is: %d\n",sum);
+		if((sum&ac) && (sum&heater))
+		{
+			printf("Yes... Both ac and heater are On!\n");
+		}
+		else
+		{
+			printf("they are not on\n");
+		}
+		return 1;
 	}
 	
 }
